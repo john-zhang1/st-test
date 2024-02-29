@@ -17,13 +17,13 @@ st.warning("""
     This is for testing purposes and may contain errors from chat responses.
 """)
 
-os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
-openai.api_key = OPENAI_API_KEY
-os.environ['REPLICATE_API_TOKEN'] = REPLICATE_API_TOKEN
-os.environ['PINECONE_API_KEY'] = PINECONE_API_KEY
+os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
+openai.api_key = st.secrets["OPENAI_API_KEY"]
+os.environ['REPLICATE_API_TOKEN'] = st.secrets["REPLICATE_API_TOKEN"]
+os.environ['PINECONE_API_KEY'] = st.secrets["PINECONE_API_KEY"]
 
 
-pc = Pinecone(api_key = PINECONE_API_KEY)
+pc = Pinecone(api_key = st.secrets["PINECONE_API_KEY"])
 
 # Now do stuff
 if 'myfirstpineconeindex' not in pc.list_indexes().names():
